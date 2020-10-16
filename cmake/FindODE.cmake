@@ -25,8 +25,12 @@ find_path(ODE_INCLUDE_DIR ode/ode.h
   /usr/local/include
 )
 
-set(ODE_NAMES ${ODE_NAMES} ode libode)
-find_library(ODE_LIBRARIES NAMES ${ODE_NAMES} PATH)
+if(MSVC)
+  set(ODE_LIBRARIES "ode$<$<CONGIG:Debug>:d>")
+else()
+  set(ODE_NAMES ${ODE_NAMES} ode libode)
+  find_library(ODE_LIBRARIES NAMES ${ODE_NAMES} PATH)
+endif()
 
 if(NOT ODE_FIND_QUIETLY)
 
