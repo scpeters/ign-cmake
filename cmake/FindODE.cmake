@@ -26,7 +26,7 @@ find_path(ODE_INCLUDE_DIR ode/ode.h
 )
 
 if(MSVC)
-  set(ODE_LIBRARIES "ode$<$<CONGIG:Debug>:d>")
+  set(ODE_LIBRARIES "ode$<$<CONFIG:Debug>:d>")
 else()
   set(ODE_NAMES ${ODE_NAMES} ode libode)
   find_library(ODE_LIBRARIES NAMES ${ODE_NAMES} PATH)
